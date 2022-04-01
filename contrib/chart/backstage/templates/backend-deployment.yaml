@@ -47,7 +47,9 @@ spec:
                 name: {{ include "backstage.fullname" . }}-app-env
             - configMapRef:
                 name: {{ include "backstage.fullname" . }}-auth
-          env:
+          env:        
+            - name: "LOG_LEVEL"
+              value: "debug"
             - name: NODE_ENV
               value: {{ .Values.backend.nodeEnv | default "development" }}
             - name: APP_CONFIG_backend_database_connection_password
